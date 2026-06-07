@@ -1,0 +1,157 @@
+Phase 1: AWS Infrastructure Optimization
+Create three fresh EC2 instances. We are bumping the storage slightly to prevent Jenkins from taking the node offline for low disk space.
+
+Jenkins-Ansible-Node: t3.small | 15 GB EBS Volume | Ubuntu 24.04
+
+SonarQube-Server: t3.small | 15 GB EBS Volume | Ubuntu 24.04
+
+Tomcat-App-Server: t2.micro (or t3.small) | 8 GB EBS Volume | Ubuntu 24.04
+
+Security Groups: Ensure Ports 22 (SSH), 8080 (Jenkins/Tomcat), and 9000 (SonarQube) are open to anywhere (0.0.0.0/0).
+
+Phase 2: Server Provisioning
+1. Jenkins-Ansible Node Setup
+SSH into the instance as the ubuntu user and install Java 21, Maven, Ansible, and Jenkins.
+
+Bash
+sudo apt update
+sudo apt install openjdk-21-jdk maven ansible -y
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl enable --now jenkins
+2. SonarQube Server Setup (With Pre-emptive Swap Space)
+SSH in as ubuntu. Run this to add the 2GB emergency RAM so SonarQube never crashes.
+
+Bash
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+# Install Docker and start SonarQube
+sudo apt update && sudo apt install docker.io -y
+sudo docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
+3. Tomcat Server Setup (Enforcing Java 21)
+SSH in as ubuntu. We must use Java 21 here to match Jenkins and avoid the UnsupportedClassVersionError.
+
+Bash
+sudo apt update
+sudo apt install openjdk-21-jdk -y
+sudo apt install tomcat10 -y
+# Pre-delete the default ROOT folder so our app takes over immediately
+sudo systemctl stop tomcat10
+sudo rm -rf /var/lib/tomcat10/webapps/ROOT
+sudo systemctl start tomcat10
+Phase 3: The Flawless SSH Link
+We will establish the zero-touch connection from Jenkins to Tomcat cleanly.
+
+1. Generate Key on Jenkins
+SSH into Jenkins. Switch to the jenkins user immediately.
+
+Bash
+sudo su - jenkins
+ssh-keygen -t rsa -b 4096 -N ""
+cat ~/.ssh/id_rsa.pub
+Copy the output.
+
+2. Authorize Key on Tomcat
+SSH into Tomcat. Ensure you are the ubuntu user (NOT root).
+
+Bash
+nano ~/.ssh/authorized_keys
+Paste the copied key on a new line at the very bottom. Save and exit.
+
+3. Save the Fingerprint
+Go back to the Jenkins terminal (still as the jenkins user).
+
+Bash
+ssh ubuntu@<TOMCAT-PRIVATE-IP>
+Type yes when prompted. Once logged in, type exit to drop back to Jenkins.
+
+4. Register the Host
+Still on Jenkins (as the jenkins user), tell Ansible where the Tomcat server is.
+
+Bash
+sudo nano /etc/ansible/hosts
+# Add this at the bottom:
+[app_servers]
+<TOMCAT-PRIVATE-IP> ansible_user=ubuntu
+Phase 4: Automation Scripts
+1. Create the Ansible Playbook
+On the Jenkins terminal (as the jenkins user), create the deployment script.
+
+Bash
+nano /var/lib/jenkins/deploy.yml
+YAML
+---
+- name: Enterprise Automated Deployment into Apache Tomcat
+  hosts: app_servers
+  become: yes
+  tasks:
+    - name: Stop Apache Tomcat 10 Service
+      systemd:
+        name: tomcat10
+        state: stopped
+
+    - name: Deploy the new Application WAR file
+      copy:
+        src: "{{ workspace }}/target/EcommerceApp.war"
+        dest: /var/lib/tomcat10/webapps/ROOT.war
+        owner: tomcat
+        group: tomcat
+        mode: '0644'
+
+    - name: Start Apache Tomcat 10 Service
+      systemd:
+        name: tomcat10
+        state: started
+2. The Jenkins Pipeline Script
+Create a new Pipeline job in the Jenkins Web UI. Paste this script. It already accounts for the master branch and steps inside the EcommerceApp folder to find your pom.xml.
+
+(Remember to replace your SonarQube IP and Token).
+
+Groovy
+pipeline {
+    agent any
+    
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'False' 
+    }
+    
+    stages {
+        stage('Stage 1: Source Code Management') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Msocial123/EcommerceApp.git'
+            }
+        }
+        
+        stage('Stage 2: Code Quality Validation') {
+            steps {
+                dir('EcommerceApp') {
+                    sh '''
+                    mvn clean verify sonar:sonar \
+                      -Dsonar.projectKey=EcommerceApp \
+                      -Dsonar.host.url=http://<SONARQUBE-PUBLIC-IP>:9000 \
+                      -Dsonar.login=<YOUR-SONAR-TOKEN>
+                    '''
+                }
+            }
+        }
+        
+        stage('Stage 3: Application Build') {
+            steps {
+                dir('EcommerceApp') {
+                    sh 'mvn clean package -DskipTests=true'
+                }
+            }
+        }
+        
+        stage('Stage 4: Deployment Automation') {
+            steps {
+                sh 'ansible-playbook -i /etc/ansible/hosts /var/lib/jenkins/deploy.yml --extra-vars "workspace=${WORKSPACE}/EcommerceApp"'
+            }
+        }
+    }
+}
+Click Build Now. With the memory, disk space, folder paths, and Java versions pre-aligned, this pipeline will execute perfectly in one single breath.

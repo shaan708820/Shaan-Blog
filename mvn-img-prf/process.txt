@@ -1,0 +1,113 @@
+To ensure you never face these issues again, I have compiled a Master Setup Guide. This takes you from a blank AWS instance to a fully functioning CI/CD pipeline. Follow these steps sequentially.
+
+Step 1: Network & Security (The Foundation)
+Before installing anything, ensure your servers can "talk" to each other using Private IPs.
+
+Security Group Rules: Apply these rules to the Security Group associated with your SonarQube and Tomcat instances.
+
+Port 9000 (SonarQube): Allow TCP from Jenkins Private IP (e.g., 172.31.x.x/32).
+
+Port 8080 (Tomcat): Allow TCP from Jenkins Private IP.
+
+Port 22 (SSH): Allow from your local machine IP and Jenkins Private IP.
+
+Step 2: Installation Commands
+A. Install Jenkins (on Jenkins Instance)
+Bash
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+B. Install SonarQube (on SonarQube Instance)
+Note: Ensure you have Java 17+ installed.
+
+Bash
+# Create sonar user
+sudo useradd -m sonar
+# Download and unzip SonarQube (Example for Community Edition)
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.8.100196.zip
+unzip sonarqube-*.zip
+sudo mv sonarqube-* /opt/sonarqube
+sudo chown -R sonar:sonar /opt/sonarqube
+# Start
+sudo -u sonar /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+C. Prepare Tomcat (on Tomcat Instance)
+Bash
+sudo apt install openjdk-17-jdk -y
+# Create tomcat user and directory
+sudo useradd -m -U -d /opt/tomcat -s /bin/bash tomcat
+# Download and extract Tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.24/bin/apache-tomcat-10.1.24.tar.gz
+sudo tar -xf apache-tomcat-10.1.24.tar.gz -C /opt/tomcat --strip-components=1
+# Set permissions (Crucial to allow deployment)
+sudo chown -R ubuntu:ubuntu /opt/tomcat/webapps/
+sudo /opt/tomcat/bin/startup.sh
+Step 3: Jenkins Configuration (The "Glue")
+Global Tool Config:
+
+Go to Manage Jenkins > Tools.
+
+Add SonarQube Scanner (Name it sonar-scanner).
+
+Global Credentials:
+
+sonar-tocken (Secret text): Paste your User Token generated in SonarQube (My Account > Security).
+
+tomcat-ssh (SSH User with Private Key): Paste the private key (id_rsa) used to access the Tomcat server via SSH.
+
+Step 4: The Golden Jenkinsfile
+Copy this file into your Jenkins Pipeline configuration. This script is built to handle the authentication and network paths we verified.
+
+Groovy
+pipeline {
+    agent any
+    environment {
+        // Use Private IPs
+        SONAR_URL = 'http://172.31.28.59:9000'
+        TOMCAT_IP = '172.31.27.171'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Msocial123/maven-web-application.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'sonar-tocken', variable: 'SONAR_TOKEN')]) {
+                    // -Dsonar.token is mandatory for modern SonarQube
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=maven-app -Dsonar.host.url=${SONAR_URL} -Dsonar.token=${SONAR_TOKEN}"
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sshagent(['tomcat-ssh']) {
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@${TOMCAT_IP} 'sudo /opt/tomcat/bin/shutdown.sh'"
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@${TOMCAT_IP} 'sudo rm -rf /opt/tomcat/webapps/ROOT /opt/tomcat/webapps/ROOT.war'"
+                    sh "scp target/maven-web-application.war ubuntu@${TOMCAT_IP}:/opt/tomcat/webapps/ROOT.war"
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@${TOMCAT_IP} 'sudo chown ubuntu:ubuntu /opt/tomcat/webapps/ROOT.war && sudo /opt/tomcat/bin/startup.sh'"
+                }
+            }
+        }
+    }
+}
+Step 5: Final Sanity Check
+If the build fails after following this guide, check these 3 things in order:
+
+sonar-tocken: Does the Credential ID in Jenkins match 'sonar-tocken' exactly?
+
+projectKey: Does the key in your SonarQube project dashboard match maven-app?
+
+Permissions: If Deployment fails, run ls -l /opt/tomcat/webapps/ on your Tomcat server to ensure the ubuntu user has write access.
+
+By strictly following this document, you bypass every bottleneck we encountered during our debugging process. You are now ready to automate any deployment with this template.
