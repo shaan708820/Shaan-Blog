@@ -5,3 +5,15 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkin
 sudo apt-get update
 sudo apt-get install jenkins -y
 sudo systemctl enable --now jenkins
+
+
+
+# 1. Download the updated 2026 Jenkins GPG key
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+
+# 2. Update your package lists again
+sudo apt-get update
+
+# 3. Install Jenkins
+sudo apt-get install jenkins -y
+
