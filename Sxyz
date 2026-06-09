@@ -17,3 +17,11 @@ sudo apt-get update
 # 3. Install Jenkins
 sudo apt-get install jenkins -y
 
+
+
+
+sudo apt update
+sudo apt install docker.io -y
+sudo systemctl enable --now docker
+sudo usermod -aG docker ubuntu
+sudo docker run -d --name sonarqube -p 9000:9000 --restart always sonarqube:lts-community
