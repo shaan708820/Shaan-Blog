@@ -38,3 +38,5 @@ sudo tar xzvf apache-tomcat-9.0.89.tar.gz -C /opt/tomcat --strip-components=1
 sudo useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
 sudo chown -R tomcat: /opt/tomcat
 sudo chmod -R +x /opt/tomcat/bin
+
+wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
