@@ -1,0 +1,283 @@
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/maven/sonar-maven-plugin/4.0.0.4121/sonar-maven-plugin-4.0.0.4121.jar (63 kB at 1.5 MB/s)
+[INFO] 
+[INFO] --------------------< com.mt:maven-web-application >--------------------
+[INFO] Building maven-web-application 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- sonar:4.0.0.4121:sonar (default-cli) @ maven-web-application ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.pom
+Progress (1): 1.3 kB
+Progress (1): 3.0 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.pom (3.0 kB at 82 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.pom
+Progress (1): 1.3 kB
+Progress (1): 5.1 kB
+Progress (1): 5.2 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.pom (5.2 kB at 157 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api-parent/2.16.3.1081/sonar-scanner-api-parent-2.16.3.1081.pom
+Progress (1): 1.1 kB
+Progress (1): 4.0 kB
+Progress (1): 4.8 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api-parent/2.16.3.1081/sonar-scanner-api-parent-2.16.3.1081.pom (4.8 kB at 138 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonarsource/parent/parent/60.0.52/parent-60.0.52.pom
+Progress (1): 859 B
+Progress (1): 3.0 kB
+Progress (1): 5.1 kB
+Progress (1): 7.4 kB
+Progress (1): 9.8 kB
+Progress (1): 13 kB 
+Progress (1): 17 kB
+Progress (1): 18 kB
+Progress (1): 21 kB
+Progress (1): 24 kB
+Progress (1): 27 kB
+Progress (1): 29 kB
+Progress (1): 32 kB
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/parent/parent/60.0.52/parent-60.0.52.pom (32 kB at 798 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
+Progress (1): 783 B
+Progress (1): 2.2 kB
+Progress (1): 6.0 kB
+Progress (1): 10 kB 
+Progress (1): 13 kB
+Progress (1): 16 kB
+Progress (1): 17 kB
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom (17 kB at 417 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/17/commons-parent-17.pom
+Progress (1): 732 B
+Progress (1): 2.1 kB
+Progress (1): 5.7 kB
+Progress (1): 8.9 kB
+Progress (1): 13 kB 
+Progress (1): 15 kB
+Progress (1): 18 kB
+Progress (1): 19 kB
+Progress (1): 25 kB
+Progress (1): 28 kB
+Progress (1): 31 kB
+Progress (1): 31 kB
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/17/commons-parent-17.pom (31 kB at 821 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom
+Progress (1): 754 B
+Progress (1): 2.0 kB
+Progress (1): 3.7 kB
+Progress (1): 7.1 kB
+Progress (1): 11 kB 
+Progress (1): 14 kB
+Progress (1): 14 kB
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom (14 kB at 401 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar
+Progress (1): 3.8/28 kB
+Progress (1): 8.0/28 kB
+Progress (1): 12/28 kB 
+Progress (1): 12/28 kB
+Progress (1): 17/28 kB
+Progress (1): 21/28 kB
+Progress (1): 25/28 kB
+Progress (1): 28 kB   
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar (28 kB at 660 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar
+Downloading from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+Progress (1): 7.7/284 kB
+Progress (1): 7.7/284 kB
+Progress (2): 7.7/284 kB | 3.8/251 kB
+Progress (2): 7.7/284 kB | 8.0/251 kB
+Progress (2): 7.7/284 kB | 12/251 kB 
+Progress (2): 24/284 kB | 12/251 kB 
+Progress (3): 24/284 kB | 12/251 kB | 0.9/625 kB
+Progress (3): 24/284 kB | 12/251 kB | 2.3/625 kB
+Progress (3): 40/284 kB | 12/251 kB | 2.3/625 kB
+Progress (3): 40/284 kB | 12/251 kB | 3.6/625 kB
+Progress (3): 40/284 kB | 15/251 kB | 3.6/625 kB
+Progress (3): 40/284 kB | 15/251 kB | 5.0/625 kB
+Progress (3): 40/284 kB | 15/251 kB | 6.4/625 kB
+Progress (3): 40/284 kB | 20/251 kB | 6.4/625 kB
+Progress (3): 40/284 kB | 24/251 kB | 6.4/625 kB
+Progress (3): 40/284 kB | 40/251 kB | 6.4/625 kB
+Progress (3): 57/284 kB | 40/251 kB | 6.4/625 kB
+Progress (3): 57/284 kB | 40/251 kB | 7.7/625 kB
+Progress (3): 57/284 kB | 40/251 kB | 9.1/625 kB
+Progress (3): 57/284 kB | 40/251 kB | 10/625 kB 
+Progress (3): 57/284 kB | 40/251 kB | 12/625 kB
+Progress (3): 73/284 kB | 40/251 kB | 12/625 kB
+Progress (3): 73/284 kB | 40/251 kB | 13/625 kB
+Progress (3): 73/284 kB | 40/251 kB | 15/625 kB
+Progress (3): 73/284 kB | 57/251 kB | 15/625 kB
+Progress (3): 73/284 kB | 73/251 kB | 15/625 kB
+Progress (3): 90/284 kB | 73/251 kB | 15/625 kB
+Progress (3): 106/284 kB | 73/251 kB | 15/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 15/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 16/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 17/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 19/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 20/625 kB
+Progress (3): 106/284 kB | 89/251 kB | 21/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 21/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 23/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 24/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 26/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 27/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 28/625 kB
+Progress (3): 106/284 kB | 106/251 kB | 30/625 kB
+Progress (3): 106/284 kB | 122/251 kB | 30/625 kB
+Progress (3): 106/284 kB | 122/251 kB | 31/625 kB
+Progress (3): 122/284 kB | 122/251 kB | 31/625 kB
+Progress (3): 139/284 kB | 122/251 kB | 31/625 kB
+Progress (3): 155/284 kB | 122/251 kB | 31/625 kB
+Progress (3): 155/284 kB | 130/251 kB | 31/625 kB
+Progress (3): 172/284 kB | 130/251 kB | 31/625 kB
+Progress (3): 172/284 kB | 147/251 kB | 31/625 kB
+Progress (3): 172/284 kB | 163/251 kB | 31/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 31/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 32/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 34/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 35/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 36/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 38/625 kB
+Progress (3): 188/284 kB | 163/251 kB | 39/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 39/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 41/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 42/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 43/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 45/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 46/625 kB
+Progress (3): 204/284 kB | 163/251 kB | 47/625 kB
+Progress (3): 221/284 kB | 163/251 kB | 47/625 kB
+Progress (3): 221/284 kB | 163/251 kB | 49/625 kB
+Progress (3): 221/284 kB | 179/251 kB | 49/625 kB
+Progress (3): 221/284 kB | 196/251 kB | 49/625 kB
+Progress (3): 237/284 kB | 196/251 kB | 49/625 kB
+Progress (3): 253/284 kB | 196/251 kB | 49/625 kB
+Progress (3): 253/284 kB | 212/251 kB | 49/625 kB
+Progress (3): 253/284 kB | 228/251 kB | 49/625 kB
+Progress (3): 253/284 kB | 245/251 kB | 49/625 kB
+Progress (3): 253/284 kB | 245/251 kB | 50/625 kB
+Progress (3): 253/284 kB | 245/251 kB | 52/625 kB
+Progress (3): 270/284 kB | 245/251 kB | 52/625 kB
+Progress (3): 270/284 kB | 245/251 kB | 56/625 kB
+Progress (3): 270/284 kB | 245/251 kB | 60/625 kB
+Progress (3): 284 kB | 245/251 kB | 60/625 kB    
+Progress (3): 284 kB | 245/251 kB | 64/625 kB
+Progress (3): 284 kB | 245/251 kB | 68/625 kB
+Progress (3): 284 kB | 245/251 kB | 73/625 kB
+Progress (3): 284 kB | 245/251 kB | 77/625 kB
+Progress (3): 284 kB | 251 kB | 77/625 kB    
+                                         
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.jar (251 kB at 3.6 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar (284 kB at 4.2 MB/s)
+Progress (1): 81/625 kB
+Progress (1): 85/625 kB
+Progress (1): 90/625 kB
+Progress (1): 94/625 kB
+Progress (1): 98/625 kB
+Progress (1): 102/625 kB
+Progress (1): 107/625 kB
+Progress (1): 111/625 kB
+Progress (1): 115/625 kB
+Progress (1): 119/625 kB
+Progress (1): 122/625 kB
+Progress (1): 127/625 kB
+Progress (1): 131/625 kB
+Progress (1): 135/625 kB
+Progress (1): 139/625 kB
+Progress (1): 144/625 kB
+Progress (1): 148/625 kB
+Progress (1): 152/625 kB
+Progress (1): 156/625 kB
+Progress (1): 160/625 kB
+Progress (1): 165/625 kB
+Progress (1): 169/625 kB
+Progress (1): 173/625 kB
+Progress (1): 177/625 kB
+Progress (1): 182/625 kB
+Progress (1): 186/625 kB
+Progress (1): 190/625 kB
+Progress (1): 194/625 kB
+Progress (1): 199/625 kB
+Progress (1): 203/625 kB
+Progress (1): 207/625 kB
+Progress (1): 211/625 kB
+Progress (1): 215/625 kB
+Progress (1): 220/625 kB
+Progress (1): 236/625 kB
+Progress (1): 252/625 kB
+Progress (1): 253/625 kB
+Progress (1): 270/625 kB
+Progress (1): 286/625 kB
+Progress (1): 303/625 kB
+Progress (1): 319/625 kB
+Progress (1): 335/625 kB
+Progress (1): 352/625 kB
+Progress (1): 368/625 kB
+Progress (1): 385/625 kB
+Progress (1): 401/625 kB
+Progress (1): 417/625 kB
+Progress (1): 434/625 kB
+Progress (1): 450/625 kB
+Progress (1): 466/625 kB
+Progress (1): 483/625 kB
+Progress (1): 499/625 kB
+Progress (1): 516/625 kB
+Progress (1): 532/625 kB
+Progress (1): 548/625 kB
+Progress (1): 565/625 kB
+Progress (1): 581/625 kB
+Progress (1): 598/625 kB
+Progress (1): 614/625 kB
+Progress (1): 625 kB    
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar (625 kB at 5.6 MB/s)
+[WARNING] 10:26:06.930 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[INFO] 10:26:06.945 Java 21.0.11 Ubuntu (64-bit)
+[INFO] 10:26:06.946 Linux 7.0.0-1004-aws (amd64)
+[INFO] 10:26:06.997 User cache: /var/lib/jenkins/.sonar/cache
+[INFO] 10:26:07.411 Communicating with SonarQube Server 9.9.8.100196
+[INFO] 10:26:07.429 Default locale: "en", source code encoding: "UTF-8"
+[INFO] 10:26:07.969 Load global settings
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.757 s
+[INFO] Finished at: 2026-06-09T10:26:08Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar (default-cli) on project maven-web-application: Not authorized. Please check the properties sonar.login and sonar.password. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[Pipeline] }
+WARN: Unable to locate 'report-task.txt' in the workspace. Did the SonarScanner succeed?
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deployment Automation)
+Stage "Deployment Automation" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
