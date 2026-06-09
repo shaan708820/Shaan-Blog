@@ -25,3 +25,16 @@ sudo apt install docker.io -y
 sudo systemctl enable --now docker
 sudo usermod -aG docker ubuntu
 sudo docker run -d --name sonarqube -p 9000:9000 --restart always sonarqube:lts-community
+
+
+
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+# Download and extract Tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+sudo mkdir /opt/tomcat
+sudo tar xzvf apache-tomcat-9.0.89.tar.gz -C /opt/tomcat --strip-components=1
+# Create a tomcat user and fix permissions
+sudo useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
+sudo chown -R tomcat: /opt/tomcat
+sudo chmod -R +x /opt/tomcat/bin
